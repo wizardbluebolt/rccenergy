@@ -1,0 +1,1 @@
+TEMPERATURE_BASE = "Temperature Data\\"
