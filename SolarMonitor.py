@@ -12,8 +12,8 @@ def getSolarData(pSiteName, pSite, pApiKey):
     tEDate = datetime.datetime.today().strftime("%Y-%m-%d") + "%2000:00:00"
     sDate = datetime.datetime.today() - datetime.timedelta(days=365*3)
     tSDate = sDate.strftime("%Y-%m-%d") + "%2000:00:00"
-    turl = constantsSolar.BASE_PATH + keys.SITE + "/energyDetails?timeUnit=MONTH&" + \
-        "startTime=" + tSDate + "&endTime=" + tEDate + "&api_key=" + keys.API_KEY
+    turl = constantsSolar.BASE_PATH + pSite + "/energyDetails?timeUnit=MONTH&" + \
+        "startTime=" + tSDate + "&endTime=" + tEDate + "&api_key=" + pApiKey
     conn.request("GET", turl)
     res = conn.getresponse()
     tResult = res.read().decode("utf-8")
@@ -37,9 +37,9 @@ def getSolarData(pSiteName, pSite, pApiKey):
     print("Response rows written ", str(rowsout), " to ", tOutputFile)
 
 
-for siteName in solarSites.SITES:
-    tEntry = solarSites[siteName]
+for siteName in solarSites.SITES.keys():
+    tEntry = solarSites.SITES[siteName]
     tSite = tEntry["SITE"]
     tApiKey = tEntry["API_KEY"]
-    getSolarData(tEntry, tSite, tApiKey)
+    getSolarData(siteName, tSite, tApiKey)
     print("Solar data retreived for all sites")
