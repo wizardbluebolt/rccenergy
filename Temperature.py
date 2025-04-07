@@ -1,7 +1,7 @@
 import csv
 import os
 import datetime
-import base
+import GetBase
 import baseTemperature
 import constantsTemperature
 
@@ -13,7 +13,7 @@ def get_year_month(p_date_string):
 
 
 nl = "\n"
-tempBase = base.BASE_DIR + baseTemperature.TEMPERATURE_BASE
+tempBase = GetBase.getbase() + baseTemperature.TEMPERATURE_BASE
 outfolder = tempBase + constantsTemperature.OUTPUT_FOLDER
 infolder = tempBase + constantsTemperature.INPUT_FOLDER
 now = datetime.datetime.now()

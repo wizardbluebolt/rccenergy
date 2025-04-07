@@ -1,11 +1,11 @@
 import csv
 import os
-import base
+import GetBase
 import constantsPacificPower
 
 
 ppxref = {}
-tXRef = base.BASE_DIR + constantsPacificPower.INPUT_FOLDER + constantsPacificPower.XREF_FILENAME
+tXRef = GetBase.getbase() + constantsPacificPower.INPUT_FOLDER + constantsPacificPower.XREF_FILENAME
 with open(tXRef, mode="r") as xref_file:
     xref_lines = 0
     csv_reader = csv.reader(xref_file)
@@ -15,7 +15,7 @@ with open(tXRef, mode="r") as xref_file:
             ppxref[xref_entry["account"]] = xref_entry
         xref_lines += 1
     print("Read " + str(xref_lines) + " cross-reference entries")
-tOutFilename = base.BASE_DIR + constantsPacificPower.OUTPUT_FOLDER + constantsPacificPower.OUTPUT_FILENAME
+tOutFilename = GetBase.getbase() + constantsPacificPower.OUTPUT_FOLDER + constantsPacificPower.OUTPUT_FILENAME
 with open(tOutFilename, mode="w", newline="") as out_file:
     output_lines = 0
     all_input = 0

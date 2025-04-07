@@ -1,5 +1,5 @@
 import http.client
-import base
+import GetBase
 import constantsSolar
 import solarSites
 import datetime
@@ -19,7 +19,7 @@ def getSolarData(pSiteName, pSite, pApiKey):
     tResult = res.read().decode("utf-8")
     tDict = json.loads(tResult)
     tMeters = tDict["energyDetails"]["meters"]
-    tOutputFile = base.BASE_DIR + constantsSolar.SOLAR_DIR + pSiteName + ".csv"
+    tOutputFile = GetBase.getbase() + constantsSolar.SOLAR_DIR + pSiteName + ".csv"
     with open(tOutputFile, mode="w", newline="") as out_file:
         csvout = csv.writer(out_file)
         csvout.writerow(["date", "units produced"])
