@@ -37,9 +37,10 @@ def getSolarData(pSiteName, pSite, pApiKey):
     print("Response rows written ", str(rowsout), " to ", tOutputFile)
 
 
-for siteName in solarSites.SITES.keys():
-    tEntry = solarSites.SITES[siteName]
-    tSite = tEntry["SITE"]
-    tApiKey = tEntry["API_KEY"]
-    getSolarData(siteName, tSite, tApiKey)
-    print("Solar data retreived for all sites")
+def execute():
+    for siteName in solarSites.SITES.keys():
+        tEntry = solarSites.SITES[siteName]
+        tSite = tEntry["SITE"]
+        tApiKey = tEntry["API_KEY"]
+        getSolarData(siteName, tSite, tApiKey)
+        print("Solar data retreived for all sites")

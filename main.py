@@ -1,4 +1,7 @@
 import consolemenu as cm
+import Temperature
+import SolarMonitor
+import NormPacificPower
 
 
 choice1 = "Convert Electrical Utility Data (Pacific Power)"
@@ -12,13 +15,10 @@ while tfname != "stop":
     menu.show()
     selection = menu.selected_item.text
     if selection == choice1:
-        tfname = 'NormPacificPower.py'
+        NormPacificPower.execute()
     elif selection == choice2:
-        tfname = 'Temperature.py'
+        Temperature.execute()
     elif selection == choice3:
-        tfname = 'SolarMonitor.py'
+        SolarMonitor.execute()
     else:
         tfname = 'stop'
-    if tfname != 'stop':
-        with open(tfname, mode="r") as subfile:
-            exec(subfile.read())
