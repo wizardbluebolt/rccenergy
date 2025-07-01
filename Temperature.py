@@ -7,9 +7,9 @@ import constantsTemperature
 
 
 def get_year_month(p_date_string):
-    date_parts = p_date_string.split("-")
-    date = date_parts[1] + "/1/" + date_parts[0]
-    return date
+    date_parts = p_date_string.split("/")
+    tdate = date_parts[0] + "/1/" + date_parts[2]
+    return tdate
 
 
 def execute():

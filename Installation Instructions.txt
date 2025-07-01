@@ -1,0 +1,42 @@
+Installation Instructions
+
+1) Download EnergyData.zip file to desktop computer and expand to desired location.  Note the top level folder location.  Do not change the names of the subfolders within the top level folder in order to match the instructions and for the data conversion program to be able to locate data files within the subfolder structure.
+
+2) Download EnergyDataTools.zip file to desktop computer and expand to desired location.
+
+3) Create a text file within the folder expanded in Step 2 above, suggested name Launch.bat, with the following content:
+
+          cmd /k main\main.exe --base="C:\\EnergyData\\"
+
+where EnergyData is replaced with the top level folder location for the data folder that was downloaded and expanded in Step 1 above.  The folders must be separated by "\\" as shown.
+
+4) Create a shortcut for the file created in Step 3 above and place it in a convenient location on the desktop computer (for example on the Desktop).  The shortcut can have any convenient name.
+
+5) In order to run the Data Conversion Tool as called for in the Data Update Instructions, just double click on the created shortcut.
+
+Rebuilding the Energy Data Tools from Python
+
+If changes are needed to the Python code, the following steps can be followed to rebuild the packaged executable using PyInstaller.
+
+The prerequisites are installation of Python and the pip package manager on a machine with the same processor architecture as the target platform (i.e. 64-bit Windows).
+The PyInstaller tool is also needed to assemble the final executable.  Using PyInstaller avoids the need to install Python on the target machine.
+Instructions for installing Python, pip, and PyInstaller are readily available on-line.
+
+It is also recommended to install the git source code manager in order to properly version and update the repository on GitHub.
+
+1) Clone the repository wizardbluebolt/rccenergy to get the latest source code, or pull the latest changes if the repository was already cloned.
+
+2) Copy the file solarSites.py from the project SharePoint site in the Installation folder to the source code folder.
+This file should never be included in the published source code repository because it includes the API keys for the Solar Edge platform for the two RCC sites.
+The file is listed in the .gitignore for this reason.
+
+3) Make required changes and test.
+
+4) Assemble the final executable with the following command
+python -m PyInstaller main.py
+
+The executable file will be located in the dist folder.
+
+5) Test that the final executable works as expected.
+
+6) Push changes to the GitHub repository.
